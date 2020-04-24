@@ -1,12 +1,13 @@
 {:source-paths ["src"]
 
- :dependencies [[reagent "0.9.1"]
-                [re-frame "0.10.7"]
+ :dependencies [[reagent "0.10.0"]
+                [re-frame "0.12.0"]
                 [day8.re-frame/http-fx "v0.2.0"]
                 [cljs-ajax "0.7.3"]
                 [bidi "2.1.5"]
                 [kibu/pushy "0.3.8"]
-                [binaryage/devtools "0.9.10"]]
+                [binaryage/devtools "0.9.10"]
+                [re-frisk "1.1.0"]]
 
  :nrepl        {:port 3333}
 
@@ -14,9 +15,11 @@
                       :output-dir "public/js"
                       :asset-path "/js"
 
+                      :compiler-options {:closure-defines
+                                         {re-frame.trace/trace-enabled? true}}
+
                       :modules {:main {:init-fn conduit.core/init}}
 
-                      :compiler-options {:shadow-keywords true}
-                      
                       :devtools {:http-root   "public"
-                                 :http-port   3000}}}}
+                                 :http-port   3000
+                                 :preloads    [re-frisk.preload]}}}}

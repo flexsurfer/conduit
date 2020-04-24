@@ -1,6 +1,6 @@
 (ns conduit.core
   (:require [re-frame.core :refer [dispatch-sync]]
-            [reagent.core :as reagent]
+            [reagent.dom :as rdom]
             [conduit.router :as router]
             [conduit.events]  ;; These three are only
             [conduit.subs]    ;; required to make the compiler
@@ -26,5 +26,5 @@
   ;; Render the UI into the HTML's <div id="app" /> element
   ;; The view function `conduit.views/conduit-app` is the
   ;; root view for the entire UI.
-  (reagent/render [conduit.views/conduit-app]
+  (rdom/render [conduit.views/conduit-app]
     (.getElementById js/document "app")))
